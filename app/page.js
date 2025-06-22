@@ -72,12 +72,12 @@ export default function Home() {
       </div>
       <div className="h-[2px] mt-4 bg-gradient-to-r from-purple-500 to-pink-500 space-y-4 opacity-45"></div>
       <div className="flex flex-col items-center justify-center  py-14">
-                <h1 className="text-3xl font-bold mb-4">Learn More About Chai ☕</h1>
+                <h1 className="text-3xl text-center font-bold mb-4">Learn More About Chai ☕</h1>
 
         <iframe
           className="mt-5 rounded-2xl border border-amber-50"
-          width="560"
-          height="315"
+          width="fit"
+          height="full"
           src="https://www.youtube.com/embed/57HlOheYTzY?si=TNApVrThUW8WfoXO"
           title="YouTube video player"
           frameborder="0"

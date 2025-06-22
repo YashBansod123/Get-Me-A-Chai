@@ -14,9 +14,9 @@ import { useRouter } from "next/navigation";
 
 const PaymentPage = ({ username }) => {
   const [paymentform, setPaymentform] = useState({
-    name: " ",
-    message: " ",
-    amount:""  
+    name:"",
+    message:"",
+    amount:"", 
   });
   const [currentUser, setCurrentUser] = useState(null);
   const [payments, setPayments] = useState([]);
@@ -129,13 +129,13 @@ const PaymentPage = ({ username }) => {
       <div className="info flex items-center justify-center flex-col my-10 mt-20">
         <h2 className="text-2xl font-bold">@{username}</h2>
         <div className="text-slate-400">Lets help @{username} gets a Chai</div>
-        <div className="text-slate-400">
+        <div className="text-slate-400 text-center">
           {payments?.length || 0} Supporters. {currentUser?.name || "Someone"}{" "}
           has raised ₹{payments?.reduce((a, b) => a + b.amount, 0) || 0} for
           this project.
         </div>
-        <div className="payment flex gap-3 w-[80%] mt-11">
-          <div className="supoorters w-1/2 bg-gray-800 rounded-lg p-10">
+        <div className="payment flex flex-col md:flex-row gap-3 w-[80%] mt-11">
+          <div className="supoorters md:w-1/2 w-full bg-gray-800 rounded-lg p-10">
             <h2 className=" text-white text-2xl font-bold my-5">Top 10 Supporters</h2>
             <ul className="text-white ">
               {payments.length == 0 && (
@@ -157,22 +157,22 @@ const PaymentPage = ({ username }) => {
                   />
                   <span>
                     {payment.name} donated{" "}
-                    <span className="font-bold">₹{payment.amount}</span> With
+                    <span className="font-bold ">₹{payment.amount}</span> With
                     Message "{payment.message}"
                   </span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="makepayment w-1/2 bg-gray-800 rounded-lg">
-            <div className="flex flex-col gap-2 p-10">
+          <div className="makepayment md:w-1/2 w-full bg-gray-800 rounded-lg">
+            <div className="flex flex-col  gap-2 p-10">
               <input
                 type="text"
                 onChange={handleChange}
                 value={paymentform.name}
                 name="name"
                 placeholder="Enter Name"
-                className="w-full p-2 border border-slate-300 bg-gray-700 rounded-lg"
+                 className="w-full p-2 border border-slate-300 bg-gray-700 rounded-lg"
               ></input>
               <input
                 type="text"
@@ -180,10 +180,10 @@ const PaymentPage = ({ username }) => {
                 value={paymentform.message}
                 name="message"
                 placeholder="Enter message"
-                className="w-full p-2 border border-slate-300 bg-gray-700 rounded-lg"
+                 className="w-full p-2 border border-slate-300 bg-gray-700 rounded-lg"
               ></input>
               <input
-                type="int"
+                type="number"
                 onChange={handleChange}
                 value={paymentform.amount}
                 name="amount"
@@ -194,8 +194,8 @@ const PaymentPage = ({ username }) => {
                 onClick={() => pay(paymentform.amount)}
                 type="button"
                 disabled={
-                  paymentform.amount == 0 ||
-                  !paymentform.name ||
+                  paymentform.amount < 1 ||
+                  paymentform.name.length < 3 ||
                   paymentform.message.length < 3
                 }
                 className=" disabled:cursor-not-allowed cursor-pointer mt-4 bg-gradient-to-r from-white to-blue-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2"
@@ -204,34 +204,59 @@ const PaymentPage = ({ username }) => {
               </button>
             </div>
             {/* Or Choose from this amount */}
-            <div className="flex gap-2 mx-10 mb-10">
+            <div className="flex flex-col md:flex-row gap-2 mx-10 mb-10 overflow-auto">
               <button
                 onClick={() => pay(300)}
-                className="border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
+                type="button"
+                disabled={
+                  
+                  paymentform.name.length < 3 ||
+                  paymentform.message.length < 3
+                }
+                className="disabled:cursor-not-allowed border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
               >
                 Pay ₹300
               </button>
               <button
                 onClick={() => pay(500)}
-                className="border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
+                disabled={
+                  
+                  paymentform.name.length < 3 ||
+                  paymentform.message.length < 3
+                }
+                className="disabled:cursor-not-allowed border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
               >
                 Pay ₹500
               </button>
               <button
                 onClick={() => pay(700)}
-                className="border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
+                disabled={
+                  paymentform.amount.length < 1 ||
+                  paymentform.name.length < 3 ||
+                  paymentform.message.length < 3
+                }
+                className="disabled:cursor-not-allowed border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
               >
                 Pay ₹700
               </button>
               <button
                 onClick={() => pay(930)}
-                className="border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
+                disabled={
+                  paymentform.name.length < 3 ||
+                  paymentform.message.length < 3
+                }
+                className="disabled:cursor-not-allowed border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
               >
                 Pay ₹930
               </button>
               <button
                 onClick={() => pay(1200)}
-                className="border cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
+                disabled={
+                 
+                  paymentform.name.length < 3 ||
+                  paymentform.message.length < 3
+                }
+                className=" disabled:cursor-not-allowed cursor-pointer border-slate-300 bg-slate-400 hover:bg-slate-600 p-2 rounded-lg "
               >
                 Pay ₹1200
               </button>
