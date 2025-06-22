@@ -5,13 +5,13 @@ export default function Home() {
   return (
     <div className=" text-white">
       <div className="flex flex-col gap-5 items-center justify-center h-[44vh]">
-        <div className="text-5xl flex font-bold items-center justify-center">
-          Buy Me A Chai
-          <span className="flex  ">
-            <img className="InvertImg" src="/tea.gif" width={88} alt="Chai" />
+        <div className="text-5xl md:flex font-bold items-center justify-center">
+          <span className="flex justify-center items-center ">Buy Me A Chai</span>
+          <span className="flex justify-center items-center">
+            <img className="InvertImg " src="/tea.gif" width={88} alt="Chai" />
           </span>
         </div>
-        <p>
+        <p className=" text-center">
           A crowdfunding platfrom for developers. Get funded by your fans and
           followers. Start Now!
         </p>
@@ -36,11 +36,11 @@ export default function Home() {
       </div>
       <div className="h-[2px] mt-4 bg-gradient-to-r from-purple-500 to-pink-500 opacity-45"></div>
       <div className="flex flex-col gap-5 items-center justify-center  py-16">
-        <h1 className="text-3xl font-bold">Your fans can buy you Chai</h1>
-        <div className="flex  justify-around gap-46 mt-5">
-          <div className="item flex flex-col items-center justify-center  ">
+        <h1 className="text-center text-3xl font-bold">Your fans can buy you Chai</h1>
+        <div className="md:flex  justify-around gap-46 md:mt-5 ">
+          <div className="item flex flex-col items-center justify-center mb-8 ">
             <img
-              className="mb-4 flex flex-col rounded-full bg-amber-200 p-3 text-black"
+              className="mb-4 flex flex-col rounded-full bg-amber-200 p-3 text-black my-10"
               src="/man.gif"
               width={78}
               alt="Man"
@@ -48,7 +48,7 @@ export default function Home() {
             <p className="font-bold">Fund Your Project</p>
             <p>Your Fans are available to help you</p>
           </div>
-          <div className="item flex flex-col items-center justify-center ">
+          <div className="item flex flex-col items-center justify-center mb-8">
             <img
               className="mb-4 flex flex-col rounded-full bg-amber-200 p-3 text-black"
               src="/coin.gif"
@@ -58,7 +58,7 @@ export default function Home() {
             <p className="font-bold">Fund Your Project</p>
             <p>Your Fans are available to help you</p>
           </div>
-          <div className="item flex flex-col items-center justify-center ">
+          <div className="item flex flex-col items-center justify-center mb-8 ">
             <img
               className="mb-4 flex flex-col rounded-full bg-amber-200 p-3 text-black"
               src="/group.gif"

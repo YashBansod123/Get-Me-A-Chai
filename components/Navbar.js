@@ -50,7 +50,7 @@ const Navbar = () => {
         className="text-2xl font-bold flex items-center justify-center  bg-gradient-to-r from-gray-400 to-pink-500 bg-clip-text text-transparent"
       >
         <img className="InvertImg" src="/tea.gif" width={48} alt="Chai" />
-        <a href="/">GetMeAChai</a>
+        <a className="hidden md:block" href="/">GetMeAChai</a>
       </a>
       {/* <divclassNameName="space-x-6 text-sm">
         <a href="/"classNameName="hover:text-green-400 transition">
@@ -63,7 +63,7 @@ const Navbar = () => {
           Contact
         </a>
       </div> */}
-      <div className="relative" ref={dropdownRef}>
+      <div className="relative gap-14" ref={dropdownRef}>
         {session && (
           <>
             <button
@@ -72,7 +72,7 @@ const Navbar = () => {
                 //  onBlur={()=>setTimeout(() => setShowDropdown(false), 100)}
               id="dropdownDefaultButton"
               data-dropdown-toggle="dropdown"
-              className="text-white mx-4 cursor-pointer relative  bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-blue-800"
+              className="text-white mx-[-15px] md:mx-4 cursor-pointer relative  md:bg-gray-700 md:hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center md:dark:bg-gray-600 md:dark:hover:bg-gray-700 dark:focus:ring-blue-800"
               type="button"
             >
               {currentUser?.profilepic ? (
