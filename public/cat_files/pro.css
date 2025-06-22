@@ -1,0 +1,139 @@
+
+.pro-pay-wrap {
+	margin: 20px 0;
+	text-align: center;
+}
+.pro-pay-label {
+	margin: 20px;
+}
+.pro-discount {
+	color: #4a4;
+	font-weight: bold;
+}
+.pro-login-msg {
+	margin: 20px 0;
+	text-align: center;
+	font-size: 0.9em;
+	color: #999;
+}
+.pro-table .red {
+	background: #fbb;
+}
+.pro-table .green {
+	background: #afa;
+}
+.darkmode .pro-table .red,
+.darkmode .pro-table .green {
+	color: #333;
+}
+table.pro-table {
+	border-collapse: collapse;
+}
+.pro-table td.pro-header {
+	border: none;
+	padding: 20px 0 10px;
+	font-weight: bold;
+}
+.pro-header a {
+	color: #000;
+	text-decoration: underline;
+}
+.darkmode .pro-header a {
+	color: #fff;
+}
+.pro-table th {
+	font-weight: normal;
+	font-size: 20px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	white-space: nowrap;
+}
+.darkmode .pro-table th {
+	border-color: #666;
+}
+.pro-table td {
+	padding: 10px;
+	border: 1px solid #666;
+}
+.darkmode .pro-table td {
+	border-color: #999;
+}
+.pro-table .pro-table-spacer {
+	border: none;
+}
+.pro-popup-back-btn {
+	margin-bottom: 10px;
+}
+.pro-table-btn-row td {
+	padding: 0;
+	border: none;
+}
+.pro-table-btn-row .but {
+	width: 100%;
+	margin-top: 5px;
+}
+.pro-table-selected-text {
+	font-size: 12px;
+	text-align: center;
+	color: #999;
+}
+.pro-footer-note {
+	margin-top: 30px;
+	font-size: 0.8em;
+	color: #999;
+	text-align: center;
+}
+
+.pro-popup {
+	margin: 20px;
+	max-width: 800px;
+}
+.pro-popup-error {
+	color: #f44;
+	margin: 0 0 20px;
+}
+.pro-popup-msg {
+	margin: 0 0 20px;
+}
+.pro-popup-msg-plain {
+	margin: 0 0 20px;
+	font-size: 20px;
+}
+.pro-basic-popup {
+	margin: 20px;
+	max-width: 400px;
+}
+.api-premium-popup {
+	margin: 20px;
+	max-width: 400px;
+}
+.pro-checkout-btn {
+	display: block;
+	margin: 20px auto;
+	min-width: 200px;
+}
+.pro-already-pro {
+	text-align: center;
+	font-size: 1.3em;
+}
+.pro-stripe-embed {
+	margin: 0 -15px;
+}
+.pro-stripe-embed .load {
+	width: 28px; /* same as default button height after adding 2px border */
+	height: 28px;
+}
+
+.pro-success-popup {
+	padding: 20px;
+}
+.pro-success-popup p {
+	margin: 15px 0;
+}
+.pro-success-popup p:first-child {
+	margin-top: 0;
+}
+.pro-success-popup .but {
+	margin: 10px 10px 0 0;
+	width: 150px;
+}

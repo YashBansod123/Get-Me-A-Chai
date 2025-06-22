@@ -1,0 +1,17 @@
+.pw-sticky {
+    top: 40px !important;
+}
+
+@media (min-width: 728px) {
+    .banner-ad, #leaderboard_atf, #leaderboard_btf, .head .ad {
+        max-height: 90px !important;
+        overflow: hidden !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .banner-ad, div#pw-320x50_atf, div#pw-320x50_btf, .head .ad {
+        max-height: 50px !important;
+        overflow: hidden !important;
+   }
+}

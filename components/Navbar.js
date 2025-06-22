@@ -1,0 +1,178 @@
+"use client";
+
+import a from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useState, useEffect, useRef } from "react";
+import React from "react"
+
+const Navbar = () => {
+  const { data: session } = useSession();
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  //  if(session) {
+  // return <>
+  //   Signed in as {session.user.email} <br/>
+  //   <button onClick={() => signOut()}>Sign out</button>
+  // </>
+  //   }
+  const dropdownRef = useRef();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    } 
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const getUser = async () => {
+      if (!session?.user?.name) return;
+
+      try {
+        const res = await fetch(`/api/userdata?username=${session.user.name}`);
+        const data = await res.json();
+        setCurrentUser(data.user);
+      } catch (err) {
+        console.error("Navbar user fetch failed:", err);
+      }
+    };
+
+    getUser();
+  }, [session]);
+  return (
+    <nav className="bg-gray-900 text-white p-2 flex justify-between items-center shadow-md">
+      <a
+        href="/"
+        className="text-2xl font-bold flex items-center justify-center  bg-gradient-to-r from-gray-400 to-pink-500 bg-clip-text text-transparent"
+      >
+        <img className="InvertImg" src="/tea.gif" width={48} alt="Chai" />
+        <a href="/">GetMeAChai</a>
+      </a>
+      {/* <divclassNameName="space-x-6 text-sm">
+        <a href="/"classNameName="hover:text-green-400 transition">
+          Home
+        </a>
+        <a href="/about"classNameName="hover:text-green-400 transition">
+          about
+        </a>
+        <a href="/contact"classNameName="hover:text-green-400 transition">
+          Contact
+        </a>
+      </div> */}
+      <div className="relative" ref={dropdownRef}>
+        {session && (
+          <>
+            <button
+              
+              onClick={() => setShowDropdown(!showDropdown)}
+                //  onBlur={()=>setTimeout(() => setShowDropdown(false), 100)}
+              id="dropdownDefaultButton"
+              data-dropdown-toggle="dropdown"
+              className="text-white mx-4 cursor-pointer relative  bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-blue-800"
+              type="button"
+            >
+              {currentUser?.profilepic ? (
+    <img
+      src={currentUser.profilepic}
+      alt="Profile"
+      className="w-8 h-8 rounded-full object-cover border-2 mx-2 border-white"
+    />
+  ) : (
+    <div className="w-10 h-10 rounded-full bg-gray-600" />
+  )}{session.user.name}{" "}
+              <svg
+                className="w-2.5 h-2.5 ms-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+
+            <div
+              id="dropdown"
+              className={`z-10 ${
+                showDropdown ? "" : "hidden"
+              } absolute  bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700`}
+            >
+              <ul
+                className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="dropdownDefaultButton"
+              >
+                <li>
+                  <a
+                    href="/dashboard"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`/${session.user.name}`} 
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Your Page
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Earnings
+                  </a>
+                </li>
+                <li>
+                  <button
+                    onClick={() => signOut()}
+                    className="w-full text-left block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Sign out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
+
+        {/* {session && ( 
+          <a href={"/dashboard"}>
+            <button
+              onClick={() => signOut()}
+              type="button"
+             className="text-white cursor-pointer mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Logout
+            </button>
+          </a>
+        )} */}
+
+        {!session && (
+          <a href="/login">
+            <button
+              type="button"
+              className="text-white cursor-pointer mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Login
+            </button>
+          </a>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
