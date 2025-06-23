@@ -1,7 +1,7 @@
 // app/api/userdata/route.js
 
 import { NextResponse } from 'next/server';
-import { fetchUser, fetchpayments } from '@/actions/useractions'; // adjust this path
+import { fetchUser, fetchpayments } from '@/actions/useractions';
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
@@ -16,6 +16,7 @@ export async function GET(req) {
       payments,
     });
   } catch (err) {
+    console.error("❌ /api/userdata error:", err.message);
     return NextResponse.json({ error: "Server Error" }, { status: 500 });
   }
 }
