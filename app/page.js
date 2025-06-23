@@ -1,6 +1,6 @@
-import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 export default function Home() {
   return (
     <div className=" text-white">
@@ -10,7 +10,7 @@ export default function Home() {
             Buy Me A Chai
           </span>
           <span className="flex justify-center items-center">
-            <img className="InvertImg " src="/tea.gif" width={88} alt="Chai" />
+            <Image className="InvertImg " src="/tea.gif" width={88} height={88} alt="Chai" />
           </span>
         </div>
         <p className=" text-center">
@@ -43,30 +43,33 @@ export default function Home() {
         </h1>
         <div className="md:flex  justify-around gap-46 md:mt-5 ">
           <div className="item flex flex-col items-center justify-center mb-8 ">
-            <img
+            <Image
               className="mb-4 flex flex-col rounded-full bg-amber-200 p-3 text-black my-10"
               src="/man.gif"
               width={78}
+              height={78}
               alt="Man"
             />
             <p className="font-bold">Fund Your Project</p>
             <p>Your Fans are available to help you</p>
           </div>
           <div className="item flex flex-col items-center justify-center mb-8">
-            <img
+            <Image
               className="mb-4 flex flex-col rounded-full bg-amber-200 p-3 text-black"
               src="/coin.gif"
               width={78}
+              height={78}
               alt="Man"
             />
             <p className="font-bold">Fund Your Project</p>
             <p>Your Fans are available to help you</p>
           </div>
           <div className="item flex flex-col items-center justify-center mb-8 ">
-            <img
+            <Image
               className="mb-4 flex flex-col rounded-full bg-amber-200 p-3 text-black"
               src="/group.gif"
               width={78}
+              height={78}
               alt="Man"
             />
             <p className="font-bold">Fans Wants to help You</p>

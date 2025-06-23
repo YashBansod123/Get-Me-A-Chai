@@ -11,6 +11,7 @@ import { searchParams } from "next/dist/shared/lib/hooks-client-context.shared-r
 import { ToastContainer, toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const PaymentPage = ({ username }) => {
   const [paymentform, setPaymentform] = useState({
@@ -26,22 +27,23 @@ const PaymentPage = ({ username }) => {
   const handleChange = (e) => {
     setPaymentform({ ...paymentform, [e.target.name]: e.target.value });
   };
-  useEffect(() => {
-    if (searchParams.get("paymentDone") === "true") {
-      toast("Payment Done", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
-    }
-    router.push(`/${username}`);
-  }, []);
+ useEffect(() => {
+  if (searchParams.get("paymentDone") === "true") {
+    toast("Payment Done", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+  }
+  router.push(`/${username}`);
+}, [searchParams, router, username]);
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -117,9 +119,9 @@ const PaymentPage = ({ username }) => {
         strategy="afterInteractive"
       />
       <div className="cover w-full ">
-        <img className="object-cover w-full" src="/patreon_banner.gif" alt="" />
+       <Image className="object-cover w-full" src="/patreon_banner.gif" alt="" />
         <div className="w-[100px] h-[120px]  absolute my-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <img
+         <Image
             className="object-contain  border border-white rounded-lg"
             src={currentUser?.profilepic || "/cat1.jpg"}
             alt=""
@@ -140,7 +142,7 @@ const PaymentPage = ({ username }) => {
             <ul className="text-white ">
               {payments.length == 0 && (
                 <li className=" flex items-center gap-2 ">
-                  <img
+                 <Image
                     src="avatar.gif"
                     className="w-10 h-10 rounded-full"
                     alt=""
@@ -150,7 +152,7 @@ const PaymentPage = ({ username }) => {
               )}
               {payments.map((payment, i) => (
                 <li key={i} className=" flex items-center gap-2 ">
-                  <img
+                 <Image
                     src="avatar.gif"
                     className="w-10 h-10 rounded-full"
                     alt=""

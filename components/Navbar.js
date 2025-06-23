@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect, useRef } from "react";
 import React from "react"
+import Image from "next/image";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -49,7 +50,7 @@ const Navbar = () => {
         href="/"
         className="text-2xl font-bold flex items-center justify-center  bg-gradient-to-r from-gray-400 to-pink-500 bg-clip-text text-transparent"
       >
-        <img className="InvertImg" src="/tea.gif" width={48} alt="Chai" />
+        <Image className="InvertImg" src="/tea.gif" width={48} height={48} alt="Chai" />
         <Link className="hidden md:block" href="/">GetMeAChai</Link>
      </Link>
       {/* <divclassNameName="space-x-6 text-sm">
