@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
+
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/Chai', {
+    await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -11,4 +12,5 @@ const connectDB = async () => {
     process.exit(1); // Exit process on failure
   }
 };
+
 export default connectDB;
