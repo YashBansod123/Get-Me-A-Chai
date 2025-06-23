@@ -1,31 +1,34 @@
 import NextAuth from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import connectDb from "@/db/connectDb";
 import User from "@/models/User";
 
 const authOptions = {
   providers: [
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
+
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      if (account.provider === "github") {
+    async signIn({ user, account }) {
+      if (account.provider === "google") {
         await connectDb();
-        const currentUser = await User.findOne({ email: user.email });
-        if (!currentUser) {
+        const existingUser = await User.findOne({ email: user.email });
+        if (!existingUser) {
           await User.create({
             email: user.email,
             username: user.email.split("@")[0],
           });
         }
-        return true;
       }
+      return true;
     },
 
     async session({ session }) {
+      await connectDb();
       const dbUser = await User.findOne({ email: session.user.email });
       session.user.name = dbUser.username;
       return session;
