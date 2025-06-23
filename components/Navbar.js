@@ -1,6 +1,6 @@
 "use client";
 
-import a from "next/link";
+import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect, useRef } from "react";
 import React from "react"
@@ -45,23 +45,23 @@ const Navbar = () => {
   }, [session]);
   return (
     <nav className="bg-gray-900 text-white p-2 flex justify-between items-center shadow-md">
-      <a
+      <Link
         href="/"
         className="text-2xl font-bold flex items-center justify-center  bg-gradient-to-r from-gray-400 to-pink-500 bg-clip-text text-transparent"
       >
         <img className="InvertImg" src="/tea.gif" width={48} alt="Chai" />
-        <a className="hidden md:block" href="/">GetMeAChai</a>
-      </a>
+        <Link className="hidden md:block" href="/">GetMeAChai</Link>
+     </Link>
       {/* <divclassNameName="space-x-6 text-sm">
-        <a href="/"classNameName="hover:text-green-400 transition">
+        <Link href="/"classNameName="hover:text-green-400 transition">
           Home
-        </a>
-        <a href="/about"classNameName="hover:text-green-400 transition">
+       </Link>
+        <Link href="/about"classNameName="hover:text-green-400 transition">
           about
-        </a>
-        <a href="/contact"classNameName="hover:text-green-400 transition">
+       </Link>
+        <Link href="/contact"classNameName="hover:text-green-400 transition">
           Contact
-        </a>
+       </Link>
       </div> */}
       <div className="relative gap-14" ref={dropdownRef}>
         {session && (
@@ -72,7 +72,7 @@ const Navbar = () => {
                 //  onBlur={()=>setTimeout(() => setShowDropdown(false), 100)}
               id="dropdownDefaultButton"
               data-dropdown-toggle="dropdown"
-              className="text-white mx-[-15px] md:mx-4 cursor-pointer relative  md:bg-gray-700 md:hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center md:dark:bg-gray-600 md:dark:hover:bg-gray-700 dark:focus:ring-blue-800"
+              className="text-white mx-[-15px] md:mx-4 cursor-pointer relative  md:bg-gray-700 md:hover:bg-gray-800 md:focus:ring-4 md:focus:outline-none md:focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center md:dark:bg-gray-600 md:dark:hover:bg-gray-700 md:dark:focus:ring-blue-800"
               type="button"
             >
               {currentUser?.profilepic ? (
@@ -112,28 +112,28 @@ const Navbar = () => {
                 aria-labelledby="dropdownDefaultButton"
               >
                 <li>
-                  <a
+                  <Link
                     href="/dashboard"
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Dashboard
-                  </a>
+                 </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href={`/${session.user.name}`} 
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Your Page
-                  </a>
+                 </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="#"
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Earnings
-                  </a>
+                 </Link>
                 </li>
                 <li>
                   <button
@@ -149,7 +149,7 @@ const Navbar = () => {
         )}
 
         {/* {session && ( 
-          <a href={"/dashboard"}>
+          <Link href={"/dashboard"}>
             <button
               onClick={() => signOut()}
               type="button"
@@ -157,18 +157,18 @@ const Navbar = () => {
             >
               Logout
             </button>
-          </a>
+         </Link>
         )} */}
 
         {!session && (
-          <a href="/login">
+          <Link href="/login">
             <button
               type="button"
               className="text-white cursor-pointer mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             >
               Login
             </button>
-          </a>
+         </Link>
         )}
       </div>
     </nav>

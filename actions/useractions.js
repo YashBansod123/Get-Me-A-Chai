@@ -12,7 +12,7 @@ export const initiate = async (amount, to_username, paymentform) => {
   
   
 
-  if (!paymentform?.name || !to_username || !amount) {
+  if (!paymentform?.name || !to_username || !paymentform?.amount) {
     throw new Error("Missing required fields: name, to_user, or amount");
   }
 

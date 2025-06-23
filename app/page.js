@@ -6,7 +6,9 @@ export default function Home() {
     <div className=" text-white">
       <div className="flex flex-col gap-5 items-center justify-center h-[44vh]">
         <div className="text-5xl md:flex font-bold items-center justify-center">
-          <span className="flex justify-center items-center ">Buy Me A Chai</span>
+          <span className="flex justify-center items-center ">
+            Buy Me A Chai
+          </span>
           <span className="flex justify-center items-center">
             <img className="InvertImg " src="/tea.gif" width={88} alt="Chai" />
           </span>
@@ -17,26 +19,28 @@ export default function Home() {
         </p>
         <div>
           <Link href="/login">
-          <button
-            type="button"
-            className="text-white mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-          >
-            Start Here
-          </button>
+            <button
+              type="button"
+              className="text-white mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Start Here
+            </button>
           </Link>
           <Link href="/about">
-          <button
-            type="button"
-            className="text-white mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-          >
-            Read More
-          </button>
+            <button
+              type="button"
+              className="text-white mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Read More
+            </button>
           </Link>
         </div>
       </div>
       <div className="h-[2px] mt-4 bg-gradient-to-r from-purple-500 to-pink-500 opacity-45"></div>
       <div className="flex flex-col gap-5 items-center justify-center  py-16">
-        <h1 className="text-center text-3xl font-bold">Your fans can buy you Chai</h1>
+        <h1 className="text-center text-3xl font-bold">
+          Your fans can buy you Chai
+        </h1>
         <div className="md:flex  justify-around gap-46 md:mt-5 ">
           <div className="item flex flex-col items-center justify-center mb-8 ">
             <img
@@ -72,18 +76,18 @@ export default function Home() {
       </div>
       <div className="h-[2px] mt-4 bg-gradient-to-r from-purple-500 to-pink-500 space-y-4 opacity-45"></div>
       <div className="flex flex-col items-center justify-center  py-14">
-                <h1 className="text-3xl text-center font-bold mb-4">Learn More About Chai ☕</h1>
+        <h1 className="text-3xl text-center font-bold mb-4">
+          Learn More About Chai ☕
+        </h1>
 
         <iframe
-          className="mt-5 rounded-2xl border border-amber-50"
-          width="fit"
-          height="full"
+          className="mt-5 w-full max-w-3xl aspect-video rounded-2xl border border-amber-50"
           src="https://www.youtube.com/embed/57HlOheYTzY?si=TNApVrThUW8WfoXO"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
       </div>
     </div>
