@@ -3,23 +3,24 @@ import React from 'react'
 import {useSession, signIn, signOut} from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-const page = () => {
+const Page = () => {
     const {data: session} = useSession()
     
     useEffect(() => {
       document.title = 'Login- Get Me a Chai'
     }, [])
     
-    if(session){
-       const router = useRouter()
-       router.push('/dashboard')
+    useEffect(() => {
+    if (session) {
+      router.push('/dashboard');
     }
+  }, [session]);
   return (
     <div className='flex flex-col items-center justify-center py-14 mx-auto text-white'>
       {!session && <h1 className='text-2xl  font-bold'>Login to Get Started</h1>}
             {session && <h1 className='text-2xl  font-bold'>Logged In as {session.user.email}</h1>}
 
-      <div clasName="felx flex-col items-center justify-center gap-3 p-10">
+      <div clasName="flex flex-col items-center justify-center gap-3 p-10">
         <div className="flex flex-col gap-2 min-h-screen  p-10">
 
 
@@ -160,4 +161,4 @@ const page = () => {
   )
 }
 
-export default page 
+export default Page 

@@ -77,7 +77,7 @@ const Navbar = () => {
               type="button"
             >
               {currentUser?.profilepic ? (
-    <img
+    <Image
       src={currentUser.profilepic}
       alt="Profile"
       className="w-8 h-8 rounded-full object-cover border-2 mx-2 border-white"
