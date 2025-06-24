@@ -78,7 +78,7 @@ const Navbar = () => {
             >
               {currentUser?.profilepic ? (
     <Image
-      src={currentUser.profilepic}
+      src={currentUser?.profilepic || "avatar.gif"}
       alt="Profile"
       className="w-8 h-8 rounded-full object-cover border-2 mx-2 border-white"
     />
